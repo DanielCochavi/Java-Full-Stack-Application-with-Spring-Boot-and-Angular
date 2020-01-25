@@ -1,0 +1,17 @@
+<div class="container" *ngIf="errorMessageFromService">
+  <h5>{{errorMessageFromService}}</h5>
+</div>
+<H1>Welcome!</H1>
+<div class="container">
+  Welcome {{name}}! Welcome to my app! You can manage your ToDo's <a routerLink="/todos">here.</a>
+</div>
+<div class="container">
+  For more customized welcome message, you can press the button.
+  <button (click)="getWelcomeMessageWithParameters()" class="btn btn-success">Get Welcome Message</button>
+</div>
+<div class="container" *ngIf="welcomeMessageFromService">
+  <h5>Your customize welcome message</h5>
+  {{welcomeMessageFromService}}
+</div>
+
+

@@ -1,0 +1,26 @@
+<h1>Todo</h1>
+<div class="container">
+  <!--todoForm.dirty - just in case we want to warn the user but once he enter invalid input and not before that. -->
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && description.invalid">Enter at least 5 characters.</div>
+  <div class="alert alert-warning" *ngIf="todoForm.dirty && targetDate.invalid">Enter valid target date.</div>
+  <!--  by using 'form' we can send data for the server and also just press 'enter' for submitting a todo-->
+  <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+    <!--ngSubmit- submit the form with the button-->
+    <!--todoForm - a referance variable of the form. -->
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" #description="ngModel" [(ngModel)]="todo.description" class="form-control" name="description"
+             required="required" minlength="5">
+    </fieldset>
+
+    <!--  [(ngModel)] - is combined from 2 parts : property binding and event binding-->
+    <fieldset class="form-group">
+      <label>Target Date</label>
+      <input type="date" #targetDate="ngModel" [ngModel]="todo.targetDate | date: 'yyyy-MM-dd'"
+             (ngModelChange)="todo.targetDate = $event"
+             class="form-control" name="targetDate" required="required">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>

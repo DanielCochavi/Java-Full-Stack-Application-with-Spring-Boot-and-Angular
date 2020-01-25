@@ -1,0 +1,16 @@
+<h1>Login</h1>
+
+<div class="container">
+  <div class="alert alert-danger" *ngIf="invalidLogin === true">{{errorMsg}}</div>
+
+  <div>
+    Username: <input type="text" name="Username" [(ngModel)]="username"> <!--Two-way Data Binding-->
+    Password: <input type="password" name="password" [(ngModel)]="password">
+    <!--//value={{password}} it's Data Binding-->
+<!--    <button (click)="handleLogin()" class="btn btn-success">Login</button> &lt;!&ndash;// Event Binding&ndash;&gt;-->
+<!--    <button (click)="handleBasicAuthLogin()" class="btn btn-success">Login</button>-->
+    <button (click)="handleJWTAuthLogin()" class="btn btn-success">Login</button>
+
+  </div>
+</div>
+
